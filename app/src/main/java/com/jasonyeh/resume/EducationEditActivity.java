@@ -15,6 +15,8 @@ import java.util.Arrays;
 
 public class EducationEditActivity extends AppCompatActivity {
 
+    public static final String KEY_EDUCATION = "education";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,23 +51,45 @@ public class EducationEditActivity extends AppCompatActivity {
     }
 
     private void saveAndExit() {
-        Education data = new Education();
-        data.school = ((EditText) findViewById(R.id.education_edit_school)).getText().toString();
-        data.major = ((EditText) findViewById(R.id.education_edit_major)).getText().toString();
-        data.startDate = DateUtils.stringToDate(
+
+        Education education = new Education();
+        education.school = ((EditText) findViewById(R.id.education_edit_school)).getText().toString();
+        education.major = ((EditText) findViewById(R.id.education_edit_major)).getText().toString();
+        education.startDate = DateUtils.stringToDate(
                 ((EditText) findViewById(R.id.education_edit_start_date)).getText().toString());
-        data.endDate = DateUtils.stringToDate(
+        education.endDate = DateUtils.stringToDate(
                 ((EditText) findViewById(R.id.education_edit_end_date)).getText().toString());
-        data.courses = Arrays.asList(TextUtils.split(
+        // split by \n
+        education.courses = Arrays.asList(TextUtils.split(
                 ((EditText) findViewById(R.id.education_edit_courses)).getText().toString(), "\n"));
 
 
         // intent 用來放數據
         Intent resultIntent = new Intent();
-        // 這裏data是reference，不是純數據，要放純數據的話 -> serialize & deserialize
-        resultIntent.putExtra("education", data);
+        resultIntent.putExtra(KEY_EDUCATION, education);
         setResult(RESULT_OK, resultIntent);
         finish();
+
+
+//        Education data = new Education();
+//        data.school = ((EditText) findViewById(R.id.education_edit_school)).getText().toString();
+//        data.major = ((EditText) findViewById(R.id.education_edit_major)).getText().toString();
+//        data.startDate = DateUtils.stringToDate(
+//                ((EditText) findViewById(R.id.education_edit_start_date)).getText().toString());
+//        data.endDate = DateUtils.stringToDate(
+//                ((EditText) findViewById(R.id.education_edit_end_date)).getText().toString());
+//        // split by \n
+//        data.courses = Arrays.asList(TextUtils.split(
+//                ((EditText) findViewById(R.id.education_edit_courses)).getText().toString(), "\n"));
+//
+//
+//        // intent 用來放數據
+//        Intent resultIntent = new Intent();
+//        // 這裏data是reference，不是純數據，要放純數據的話 -> serialize & deserialize
+//        // putExtra key->value Store
+//        resultIntent.putExtra("education", data);
+//        setResult(RESULT_OK, resultIntent);
+//        finish();
 
 //        Education education = new Education();
 //        education.school = ((EditText) findViewById(R.id.education_edit_school)).getText().toString();

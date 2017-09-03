@@ -17,6 +17,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int REQ_CODE_EDUCATION_EDIT = 100; //request code for education_edit
+
     private BasicInfo basicInfo;
 //    private Education education;
     private List<Education> educations;
@@ -27,6 +29,18 @@ public class MainActivity extends AppCompatActivity {
 
         fakeData();
         setupUI();
+    }
+
+    //  接收取得結果，並添加到介面
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // Check
+        if (resultCode == RESULT_OK && requestCode == REQ_CODE_EDUCATION_EDIT) {
+            Education newEducation = data.getParcelableExtra(EducationEditActivity.KEY_EDUCATION);
+            educations.add(newEducation); //更新數據
+            setupEducationsUI(); // 畫介面
+        }
     }
 
     private void setupUI() {
@@ -48,14 +62,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //點擊後進入新的activity, intent參數 (context, class)
                 Intent intent = new Intent(MainActivity.this, EducationEditActivity.class);
-                startActivity(intent);
+                //startActivity(intent);
+                // 想要結果 要改成 startActivityForResult 需要request code 區分重哪邊來
+                startActivityForResult(intent, REQ_CODE_EDUCATION_EDIT);
             }
         });
         setupBasicInfoUI();
 //        setupEducationUI();
 //        setupEducationsUI();
 
-        setupEducations();
+        setupEducationsUI();
 
     }
 
@@ -98,8 +114,9 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     // multi education 代碼重構 Code refactoring
-    private void setupEducations() {
+    private void setupEducationsUI() {
         LinearLayout educationsLayout = (LinearLayout) findViewById(R.id.education_list);
+        educationsLayout.removeAllViews();   //把之前在界面上的remove，之後放新的
         for (Education education : educations) {
             educationsLayout.addView(getEducationView(education));
         }

@@ -16,6 +16,7 @@ import java.util.Arrays;
 public class EducationEditActivity extends AppCompatActivity {
 
     public static final String KEY_EDUCATION = "education";
+    private Education education;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,21 @@ public class EducationEditActivity extends AppCompatActivity {
         // Adding this code will show the back button in the ActionBar of EducationEditActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // check if we have gotten an Education object from outside
+        education = getIntent().getParcelableExtra(KEY_EDUCATION);
+        if (education != null) {
+            setupUIForEdit();
+        }
+        setTitle(education == null ? "New education" : "Edit education");
+    }
 
+
+    private void setupUIForEdit() {
+        ((EditText) findViewById(R.id.education_edit_school)).setText(education.school);
+        ((EditText) findViewById(R.id.education_edit_major)).setText(education.major);
+        ((EditText) findViewById(R.id.education_edit_start_date)).setText(DateUtils.dateToString(education.startDate));
+        ((EditText) findViewById(R.id.education_edit_end_date)).setText(DateUtils.dateToString(education.endDate));
+        ((EditText) findViewById(R.id.education_edit_courses)).setText(TextUtils.join("\n", education.courses));
     }
 
     // 顯示menu
@@ -91,15 +106,7 @@ public class EducationEditActivity extends AppCompatActivity {
 //        setResult(RESULT_OK, resultIntent);
 //        finish();
 
-//        Education education = new Education();
-//        education.school = ((EditText) findViewById(R.id.education_edit_school)).getText().toString();
-//        education.major = ((EditText) findViewById(R.id.education_edit_major)).getText().toString();
-//        education.startDate = DateUtils.stringToDate(
-//                ((EditText) findViewById(R.id.education_edit_start_date)).getText().toString());
-//        education.endDate = DateUtils.stringToDate(
-//                ((EditText) findViewById(R.id.education_edit_end_date)).getText().toString());
-//        education.courses = Arrays.asList(TextUtils.split(
-//                ((EditText) findViewById(R.id.education_edit_courses)).getText().toString(), "\n"));
+
     }
 }
 

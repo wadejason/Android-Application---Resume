@@ -7,6 +7,7 @@ import com.jasonyeh.resume.util.DateUtils;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by jasonyeh on 8/31/17.
@@ -26,7 +27,9 @@ public class Education implements Parcelable {
 
     public List<String> courses;
 
-    public Education () { }
+    public Education () {
+        id = UUID.randomUUID().toString();
+    }
 
     // deserialize
     protected Education(Parcel in) {

@@ -1,8 +1,10 @@
 package com.jasonyeh.resume;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,6 +32,25 @@ public class MainActivity extends AppCompatActivity {
     private void setupUI() {
         setContentView(R.layout.activity_main);
 
+        // findViewById return 的是 view
+//        ((ImageButton) findViewById(R.id.add_education_btm)).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //點擊後進入新的activity, intent參數 (context, class)
+//                Intent intent = new Intent(MainActivity.this, EducationEditActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+
+        // findViewById return 的是 view，所有的view 對象都有 onClickListener 方法，所以可以改成
+        findViewById(R.id.add_education_btm).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //點擊後進入新的activity, intent參數 (context, class)
+                Intent intent = new Intent(MainActivity.this, EducationEditActivity.class);
+                startActivity(intent);
+            }
+        });
         setupBasicInfoUI();
 //        setupEducationUI();
 //        setupEducationsUI();
@@ -92,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView) view.findViewById(R.id.education_school)).setText(
                 education.school + " (" + dateRangeStr + ")");
+        ((TextView) view.findViewById(R.id.education_major)).setText(
+                education.major);
         ((TextView) view.findViewById(R.id.education_courses)).setText(
                 formatItems(education.courses));
         // view ->介面上

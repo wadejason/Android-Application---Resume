@@ -26,7 +26,7 @@
 
     <string name="start_date">Start date (MM/yyyy)</string>
     <string name="end_date">End date (MM/yyyy)</string>
-    <string name="experience_edit_what_did_you_do_hint">What did you do</string>
+    <string name="experience_edit_Job_Description">Job Description</string>
     <string name="experience_edit_title_hint">Title</string>
     <string name="experience_edit_company_hint">Company</string>
     <string name="education_edit_school_hint">School</string>

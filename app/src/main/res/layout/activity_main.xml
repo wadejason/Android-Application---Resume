@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/caption_text_size"
-                    android:text="Jason Yeh"/>
+                    tools:text="Jason Yeh"/>
 
                 <ImageButton
                     android:id="@+id/edit_basic_info"
@@ -88,7 +88,7 @@
 
         </LinearLayout>
 
-        //Dynamic add education
+        // Dynamic add education
         <LinearLayout
             android:id="@+id/education_list"
             android:layout_width="match_parent"
@@ -105,45 +105,62 @@
             android:layout_marginBottom="@dimen/spacing_small">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textSize="@dimen/caption_text_size"
                 android:textAllCaps="true"
-                android:text="@string/section_experience"
-                android:layout_weight="1"/>
+                android:text="@string/section_experience"/>
 
             <ImageButton
                 android:id="@+id/add_experience_btn"
                 android:layout_width="@dimen/icon_button_size"
                 android:layout_height="@dimen/icon_button_size"
+                android:src="@drawable/ic_add_black_18dp"
                 android:background="?attr/selectableItemBackground"
-                android:src="@drawable/ic_add_black_18dp"/>
+                android:contentDescription="@string/add_experience"/>
 
         </LinearLayout>
+
+        // Dynamic add experience
+        <LinearLayout
+            android:id="@+id/experience_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp">
 
             <TextView
-                android:id="@+id/experience_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mathematics Teacher (2013 ~ 2015)" />
+                android:textSize="25sp"
+                android:textAllCaps="true"
+                android:text="@string/section_projects"/>
 
             <ImageButton
-                android:id="@+id/edit_experience_btn"
+                android:id="@+id/add_project_btn"
                 android:layout_width="@dimen/icon_button_size"
                 android:layout_height="@dimen/icon_button_size"
-                android:src="@drawable/ic_mode_edit_black_18dp"
-                android:background="?attr/selectableItemBackground" />
+                android:src="@drawable/ic_add_black_18dp"
+                android:background="?attr/selectableItemBackground"
+                android:contentDescription="@string/add_project"/>
 
         </LinearLayout>
 
-
+        <LinearLayout
+            android:id="@+id/project_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
 
     </LinearLayout>
 

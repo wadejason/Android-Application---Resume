@@ -4,6 +4,8 @@
     <string name="action_save">Save</string>
     <string name="action_delete">Delete</string>
 
+    <string name="edit_basic_info">Edit basic info</string>
+
     <string name="section_education">EDUCATION</string>
     <string name="section_experience">EXPERIENCE</string>
     <string name="section_projects">PROJECTS</string>
@@ -22,9 +24,9 @@
     <string name="edit_experience">Edit experience</string>
     <string name="edit_project">Edit project</string>
 
-    <string name="start_date">Start date</string>
-    <string name="end_date">End date</string>
-    <string name="experience_edit_what_did_you_do_hint">What did you do</string>
+    <string name="start_date">Start date (MM/yyyy)</string>
+    <string name="end_date">End date (MM/yyyy)</string>
+    <string name="experience_edit_Job_Description">Job Description</string>
     <string name="experience_edit_title_hint">Title</string>
     <string name="experience_edit_company_hint">Company</string>
     <string name="education_edit_school_hint">School</string>

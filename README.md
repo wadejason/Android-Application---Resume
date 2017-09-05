@@ -11,6 +11,7 @@ Four sections are provided for editing:
 * Projects
 
 Main UI
+
 <img width="200" alt="main_ui" src="https://user-images.githubusercontent.com/14342740/30085234-65b8056c-924a-11e7-9335-470d88596bec.png">
 
 
